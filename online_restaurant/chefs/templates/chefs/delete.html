@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>this page is delete page</h1>
+</body>
+<form action="{%url '/delete' %}" method="POST" class="sc1">
+    <div class="sc1">
+        <h2>delete chefs by input their cno</h2>
+        <label>
+            <span>chefs number</span>
+            <input id="chef_cno" name='cno' type="text" placeholder="please input cno"/>
+        </label>
+        <label>
+            <input type="submit" class="text" value="submit"/>
+        </label>
+        <br>
+    </div>
+{% csrf_token %}
+</form>
+<form action="{%url '/delete' %}" method="POST" class="sc1">
+    <div class="sc1">
+        <h2>delete dish by input their dno</h2>
+
+    </div>
+{% csrf_token %}
+</form>
+<a href="http://127.0.0.1:8000/chefs/">
+    <button>
+    click me to back homepage
+    </button>
+</a>
+</html>
