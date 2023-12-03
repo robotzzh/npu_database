@@ -3,47 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/alert.css">
+    <link rel="stylesheet" href="../../static/css/common.css">
 </head>
 <body>
-<h1>This is a page to alert chef or dish information</h1>
-<form action="{% url '/alert' %}" method="POST" class="chef">
-    <!--action参数传到对应的url地址，method为post时是提交
-    后段根据name提取数据
-    -->
-    <div class='Sc'>
+<div class="container">
+    <h1>This is a page to alert chef or dish information</h1>
+    <form action="{% url '/alert' %}" method="POST" class="chef">
+        <!--action参数传到对应的url地址，method为post时是提交
+        后段根据name提取数据
+        -->
+        <div class='box'>
 
-        <h2>alert chefs and dishes information</h2>
+            <h2>alert chefs and dishes information</h2>
+            <label>
+                <span>chef number</span>
+                <input id="cno" name='chef_cno' type="number" placeholder="please input cno"/>
+            </label><!--后端通过名识别提交-->
+            <br>
+            <label>
+                <span>description</span>
+                <input id="chef_description" name='chef_description' type="text" placeholder="please input description"/>
+            </label>
+            <br>
+            <label>
+                <span>salary</span>
+                <input id="salary" name="chef_salary" type="number" placeholder="please input salary"/>
+            </label>
+            <br>
+            <label>
+                <input  type="submit" class="text" value="submit"/>
+            </label>
+            <br>
+        </div>
+
+    </form>
+    <form action="{%url '/alert' %}" method="POST" class="">
+        <div class="box">
+            <!--input your code-->
+            <h2>alert dishes information</h2>
+        {% csrf_token %}<!--django中必须按字段-->
         <label>
-            <span>chef number</span>
-            <input id="cno" name='chef_cno' type="number" placeholder="please input cno"/>
-        </label><!--后端通过名识别提交-->
-        <br>
+            <span>dish number</span>
+            <input id="dno" name="dish_dno" type="number" placeholder="please input dno"/>
+        </label><br>
         <label>
             <span>description</span>
-            <input id="description" name='chef_description' type="text" placeholder="please input description"/>
-        </label>
-        <br>
+            <input id="dish_description" name='dish_description' type="text" placeholder="please input description"/>
+        </label><br>
         <label>
-            <span>salary</span>
-            <input id="salary" name="chef_salary" type="number" placeholder="please input salary"/>
-        </label>
-        <br>
+            <span>price</span>
+            <input id="price" name="chef_price" type="number" placeholder="please input price"/>
+        </label><br>
         <label>
-            <input type="submit" class="text" value="submit"/>
-        </label>
-        <br>
-    </div>
-{% csrf_token %}<!--django中必须按字段-->
-</form>
-<form action="{%url '/alert' %}" method="POST" class="">
-    <div class="dishes">
-        <!--input your code-->
-        <h2>alert dishes information</h2>
-    </div>
-    {% csrf_token %}<!--django中必须按字段-->
-</form>
-<a href="http://127.0.0.1:8000/chefs/">
-    click me to back homepage
-</a>
+            <input  type="submit" class="text" value="submit"/>
+        </label><br>
+        </div>
+    </form>
+    <a href="http://127.0.0.1:8000/chefs/">
+        click me to back homepage
+    </a>
+</div>
+
 </body>
 </html>

@@ -1,0 +1,33 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+input{
+    padding: 5px;
+    width: 200px;
+}
+input:hover{
+    cursor: pointer;
+}
+label{
+    display: block;
+    height: 30px;
+    margin:5px;
+}
+.container{
+    min-height: 50vh;
+    width: 800px;
+    margin: 30px auto;
+}
+h1{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.box{
+    padding: 10px;
+    margin: 20px 0;
+    border: solid rgb(122,122,122);
+    border-radius: 10px;
+    box-shadow: 3px 2px rgb(110,110,110);
+}

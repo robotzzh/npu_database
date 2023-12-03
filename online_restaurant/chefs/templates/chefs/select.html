@@ -3,34 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/select.css">
+    <link rel="stylesheet" href="../../static/css/common.css">
 </head>
 <body>
-<h1>select page</h1>
-<form action="{%url '/select' %}" method="POST" class="chefs">
-    <div class="sc1">
-        <h2>select from chefs</h2>
-        <label>
-            <span>chefs number</span>
-            <input id="chef_cno" name='cno' type="text" placeholder="please input sno"/>
-        </label>
-        <label>
-            <input type="submit" class="text" value="submit"/>
-        </label>
-        <br>
-    </div>
-{% csrf_token %}
-</form>
-<form action="{%url '/select' %}" method="POST" class="chefs">
-    <div class="sc1">
-        <h2>select from dishes</h2>
-
-    </div>
-{% csrf_token %}
-</form>
-<a href="http://127.0.0.1:8000/chefs/">
-    <button>
-    click me to back homepage
-    </button>
-</a>
+<div class="container">
+    <h1>select page</h1>
+    <form action="{%url '/select' %}" method="POST" class="chefs">
+        <div class="box">
+            <h2>select from chefs</h2>
+            <label>
+                <span>chefs number</span>
+                <input id="chef_cno" name='cno' type="text" placeholder="please input sno"/>
+            </label>
+            <label>
+                <input type="submit" class="text" value="submit"/>
+            </label>
+            <br>
+        </div>
+    {% csrf_token %}
+    </form>
+    <form action="{%url '/select' %}" method="POST" class="chefs">
+        <div class="box">
+            <h2>select from dishes</h2>
+            <label>
+                <span>dish number</span>
+                <input id="dish_dno" name='dno' type="text" placeholder="please input dno"/>
+            </label>
+            <label>
+                <input type="submit" class="text" value="submit"/>
+            </label>
+            <br>
+        </div>
+    {% csrf_token %}
+    </form>
+    <a href="http://127.0.0.1:8000/chefs/">
+        <button>
+        click me to back homepage
+        </button>
+    </a>
+</div>
 </body>
 </html>
