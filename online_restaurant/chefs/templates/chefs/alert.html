@@ -9,13 +9,13 @@
 <body>
 <div class="container">
     <h1>This is a page to alert chef or dish information</h1>
-    <form action="{% url '/alert' %}" method="POST" class="chef">
+        <form action="{% url '/alert' %}" method="POST" class="chef">
         <!--action参数传到对应的url地址，method为post时是提交
         后段根据name提取数据
         -->
         <div class='box'>
 
-            <h2>alert chefs and dishes information</h2>
+            <h2>insert chef's information</h2>
             <label>
                 <span>chef number</span>
                 <input id="cno" name='chef_cno' type="number" placeholder="please input cno"/>
@@ -27,39 +27,45 @@
             </label>
             <br>
             <label>
-                <span>salary</span>
+                <span>credit</span>
                 <input id="salary" name="chef_salary" type="number" placeholder="please input salary"/>
             </label>
             <br>
             <label>
-                <input  type="submit" class="text" value="submit"/>
+                <input type="submit" name="chef_submit" class="text" value="submit"/>
             </label>
             <br>
         </div>
-
+    {% csrf_token %}<!--django中必须按字段-->
     </form>
     <form action="{%url '/alert' %}" method="POST" class="">
         <div class="box">
             <!--input your code-->
-            <h2>alert dishes information</h2>
+            <h2>insert dish's information</h2>
+
         {% csrf_token %}<!--django中必须按字段-->
         <label>
-            <span>dish number</span>
-            <input id="dno" name="dish_dno" type="number" placeholder="please input dno"/>
-        </label><br>
-        <label>
-            <span>description</span>
-            <input id="dish_description" name='dish_description' type="text" placeholder="please input description"/>
-        </label><br>
-        <label>
-            <span>price</span>
-            <input id="price" name="chef_price" type="number" placeholder="please input price"/>
-        </label><br>
-        <label>
-            <input  type="submit" class="text" value="submit"/>
-        </label><br>
+                <span>dish number</span>
+                <input id="dno" name='dish_dno' type="number" placeholder="please input dno"/>
+            </label><!--后端通过名识别提交-->
+            <br>
+            <label>
+                <span>description</span>
+                <input id="dish_description" name='dish_description' type="text" placeholder="please input description"/>
+            </label>
+            <br>
+            <label>
+                <span>price</span>
+                <input id="price" name="dish_price" type="text" placeholder="please input price"/>
+            </label>
+            <br>
+            <label>
+                <input type="submit" name='dish_submit' class="text" value="submit"/>
+            </label>
+            <br>
         </div>
     </form>
+
     <a href="http://127.0.0.1:8000/chefs/">
         click me to back homepage
     </a>

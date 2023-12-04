@@ -9,5 +9,8 @@ urlpatterns = [
     path("/delete", views.delete, name='/delete'),
     path("/alert", views.alert, name='/alert'),
     path("/select", views.select, name='/select'),
+    path("/grab1", views.grab, name='/grab1'),
+    path("/grab2", views.grab, name='/grab2'),
+    path("/grab3", views.grab, name='/grab3'),
     path("", views.kitchen, name='/kitchen')
 ]
