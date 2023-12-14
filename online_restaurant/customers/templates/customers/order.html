@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for item in items %}
+    <div>
+        <p>dno: {{ item.dno }}</p>
+        <p>description: {{item.description}}</p>
+        <p>price: {{item.price}}元</p><br>
+
+    <form action="{% url '/order' %}" method="POST" class="order">
+        <!--action参数传到对应的url地址，method为post时是提交
+        后段根据name提取数据
+        -->
+        <div class='box'>
+            <input type="hidden" name="item_dno" value="{{ item.dno }}">
+            <label>
+                <input id="table_name" name="table_name" type="number" placeholder="input your table name" value=0>
+            </label>
+            <label>
+                <input id="comment" name="comments" type="text" placeholder="input your comments"/>
+            </label>
+            <label>
+                <input type="submit" name="order_submit" class="button" value="submit"/>
+            </label>
+            <br>
+        </div>
+    {% csrf_token %}<!--django中必须按字段-->
+    </form>
+        {# 其他数据字段的显示 #}
+    </div>
+    {# 在这里放置显示数据的代码 #}
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if items.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ items.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ items.number }} of {{ items.paginator.num_pages }}.
+        </span>
+
+        {% if items.has_next %}
+            <a href="?page={{ items.next_page_number }}">next</a>
+            <a href="?page={{ items.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+</body>
+</html>

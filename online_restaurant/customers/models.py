@@ -4,7 +4,7 @@ from django.db import models
 
 
 class eat_in(models.Model):
-    Datetime = models.DateField()
+    Datetime = models.DateField(auto_now=True)
     eat_in_no = models.IntegerField(primary_key=True)
     tno = models.IntegerField()# 桌子号
     dno = models.IntegerField()
@@ -16,7 +16,7 @@ class eat_in(models.Model):
 
 
 class take_away(models.Model):
-    Datetime = models.DateField()
+    Datetime = models.DateField(auto_now=True)
     take_away_no = models.IntegerField(primary_key=True)
     dno = models.IntegerField()
     comments = models.CharField(max_length=128)

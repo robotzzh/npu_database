@@ -25,7 +25,7 @@ class dish_chef(models.Model):
     df_no = models.IntegerField(primary_key=True)
     dno = models.IntegerField()
     cno = models.IntegerField()
-    Datetime = models.DateField()
+    Datetime = models.DateField(auto_now=True)
     finished = models.BooleanField(default=False)
     # 创建一个事件
     # event_date='2023-12-01'这样插入

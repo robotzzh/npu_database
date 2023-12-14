@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chefs.apps.ChefsConfig',
+    'finder.apps.FinderConfig',
     'customers.apps.CustomersConfig',
 ]
 

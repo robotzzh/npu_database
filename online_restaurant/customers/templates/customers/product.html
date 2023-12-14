@@ -1,0 +1,109 @@
+<!-- your_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+        <!-- 第一个翻页 -->
+        <div>
+            <h2>eat_in list</h2>
+            {% for item in items_1 %}
+            <div>
+                <span>which dish: {{item.dno}}</span>
+                <span>which table: {{item.tno}}</span>
+                <span>comments: {{item.comments}}</span>
+                <form action="{% url '/product' %}" method="POST" class="order">
+                <!--action参数传到对应的url地址，method为post时是提交
+                后段根据name提取数据
+                -->
+                <div class='box'>
+                    <label>
+                        <input type="hidden" name="item_dno" value="{{ item.dno }}">
+                        <input type="submit" name="cook" class="button" value="cook"/>
+                    </label>
+                    <label>
+                        <input type="hidden" name="item_dno" value="{{ item.dno }}">
+                        <input type="hidden" name="item_eat_in_no" value="{{ item.eat_in_no }}">
+                        <input type="submit" name="finish" class="button" value="finish"/>
+                    </label>
+                    <label>
+                        <input name="cno" type="text" placeholder="set your cno">
+                    </label>
+                </div>
+            {% csrf_token %}<!--django中必须按字段-->
+            </form>
+            </div>
+            {% endfor %}
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if items_1.has_previous %}
+                        <a href="?page_1=1">&laquo; first</a>
+                        <a href="?page_1={{ items_1.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ items_1.number }} of {{ items_1.paginator.num_pages }}.
+                    </span>
+
+                    {% if items_1.has_next %}
+                        <a href="?page_1={{ items_1.next_page_number }}">next</a>
+                        <a href="?page_1={{ items_1.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+
+        <!-- 第二个翻页 -->
+        <div>
+            <h2>take_away list</h2>
+            {% for item in items_2 %}
+                <div>
+                <span>which dish: {{item.dno}}</span>
+                <span>comments: {{item.comments}}</span>
+                </div>
+            <form action="{% url '/product' %}" method="POST" class="order">
+                <!--action参数传到对应的url地址，method为post时是提交
+                后段根据name提取数据
+                -->
+                <div class='box'>
+                    <label>
+                        <input type="hidden" name="dno" value="{{ item.dno }}">
+                        <input type="submit" name="cook" class="button" value="cook"/>
+                    </label>
+                    <label>
+                        <input type="hidden" name="dno" value="{{ item.dno }}">
+                        <input type="hidden" name="item_take_away_no" value="{{ item.take_away_no }}">
+                        <input type="submit" name="finish" class="button" value="finish"/>
+                    </label>
+                    <label>
+                        <input name="cno" type="text" placeholder="set your cno">
+                    </label>
+                </div>
+            {% csrf_token %}<!--django中必须按字段-->
+            </form>
+            {% endfor %}
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if items_2.has_previous %}
+                        <a href="?page_2=1">&laquo; first</a>
+                        <a href="?page_2={{ items_2.previous_page_number }}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ items_2.number }} of {{ items_2.paginator.num_pages }}.
+                    </span>
+
+                    {% if items_2.has_next %}
+                        <a href="?page_2={{ items_2.next_page_number }}">next</a>
+                        <a href="?page_2={{ items_2.paginator.num_pages }}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </body>
+</html>
